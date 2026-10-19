@@ -1,0 +1,7 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+  {% if allow_dump %}<li><a href="{% url 'admin:db_snapshots_snapshot_dump' %}" class="addlink">Dump a snapshot</a></li>{% endif %}
+  {% if allow_load %}<li><a href="{% url 'admin:db_snapshots_snapshot_load' %}">Load a snapshot</a></li>{% endif %}
+  {{ block.super }}
+{% endblock %}

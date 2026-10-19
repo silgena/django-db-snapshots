@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-db-snapshots"
+version = "0.1.0"
+description = "Dump a Django database to one consistent file and load it into another environment - from the admin, without SSH."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+authors = [{ name = "silgena" }]
+classifiers = [
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Framework :: Django :: 6.0",
+    "Programming Language :: Python :: 3",
+]
+dependencies = ["Django>=5.2"]
+
+[project.optional-dependencies]
+# Background runs on Django 5.2; Django 6.0+ has django.tasks built in.
+tasks = ["django-tasks>=0.8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+db_snapshots = ["templates/**/*.html"]

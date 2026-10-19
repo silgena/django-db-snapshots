@@ -1,0 +1,16 @@
+{% extends "admin/change_form.html" %}
+
+{% block extrahead %}
+  {{ block.super }}
+  {% if snapshot.is_active %}<meta http-equiv="refresh" content="5">{% endif %}
+{% endblock %}
+
+{% block after_field_sets %}
+  {{ block.super }}
+  {% if snapshot %}
+    <fieldset class="module">
+      <h2>Log{% if snapshot.is_active %} &middot; refreshing every 5 seconds{% endif %}</h2>
+      <pre style="margin:0;padding:10px;max-height:60vh;overflow:auto;white-space:pre-wrap">{{ snapshot.log|default:"(nothing yet)" }}</pre>
+    </fieldset>
+  {% endif %}
+{% endblock %}
